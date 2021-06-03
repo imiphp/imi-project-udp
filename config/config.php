@@ -22,7 +22,7 @@ return [
     'mainServer'    =>    [
         'namespace'    =>    'ImiApp\UDPServer',
         'type'        =>    Imi\Server\Type::UDP_SERVER,
-        'host'        =>    '127.0.0.1',
+        'host'        =>    '0.0.0.0',
         'port'        =>    8083,
         'configs'    =>    [
             // 'worker_num'        =>  8,
@@ -37,7 +37,7 @@ return [
         // 'SubServerName'   =>  [
         //     'namespace'    =>    'ImiApp\XXXServer',
         //     'type'        =>    Imi\Server\Type::HTTP,
-        //     'host'        =>    '127.0.0.1',
+        //     'host'        =>    '0.0.0.0',
         //     'port'        =>    13005,
         // ]
     ],
