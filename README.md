@@ -12,13 +12,13 @@ imi 框架：https://www.imiphp.com
 
 ### 方法二
 
-Swoole：`vendor/bin/imi-swoole swoole/start`
-
-Workerman：`vendor/bin/imi-workerman workerman/start`
+* `composer create-project imiphp/project-udp 2.0.x-dev`
 
 ## 启动命令
 
-在本项目目录中，执行命令：`vendor/bin/imi server/start`
+Swoole：`vendor/bin/imi-swoole swoole/start`
+
+Workerman：`vendor/bin/imi-workerman workerman/start`
 
 ## 权限
 
