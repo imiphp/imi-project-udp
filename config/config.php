@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Imi\App;
 use Imi\AppContexts;
 
@@ -7,32 +9,33 @@ $mode = App::isInited() ? App::getApp()->getType() : null;
 
 return [
     // 项目根命名空间
-    'namespace'    =>    'ImiApp',
+    'namespace'    => 'ImiApp',
 
     // 配置文件
-    'configs'    =>    [
-        'beans'        =>    __DIR__.'/beans.php',
+    'configs'    => [
+        'beans'        => __DIR__ . '/beans.php',
     ],
 
     'ignoreNamespace'   => [
     ],
 
     // 主服务器配置
-    'mainServer'    =>    'swoole' === $mode ? [
-        'namespace'    =>    'ImiApp\UDPServer',
-        'type'        =>    Imi\Swoole\Server\Type::UDP_SERVER,
-        'host'        =>    '0.0.0.0',
-        'port'        =>    8083,
-        'configs'    =>    [
+    'mainServer'    => 'swoole' === $mode ? [
+        'namespace'    => 'ImiApp\UDPServer',
+        // @phpstan-ignore-next-line
+        'type'         => Imi\Swoole\Server\Type::UDP_SERVER,
+        'host'         => '0.0.0.0',
+        'port'         => 8083,
+        'configs'      => [
             // 'worker_num'        =>  8,
             // 'task_worker_num'   =>  16,
         ],
         // 数据处理器
-        'dataParser'    =>    Imi\Server\DataParser\JsonObjectParser::class,
+        'dataParser'    => Imi\Server\DataParser\JsonObjectParser::class,
     ] : [],
 
     // 子服务器（端口监听）配置
-    'subServers'        =>    [
+    'subServers'        => [
         // 'SubServerName'   =>  [
         //     'namespace'    =>    'ImiApp\XXXServer',
         //     'type'        =>    Imi\Server\Type::HTTP,
@@ -58,6 +61,7 @@ return [
         // 主数据库
         'maindb'    => [
             'pool'    => [
+                // @phpstan-ignore-next-line
                 'class'        => \Imi\Swoole\Db\Pool\CoroutineDbPool::class,
                 'config'       => [
                     'maxResources'    => 10,
@@ -75,6 +79,7 @@ return [
         ],
         'redis'    => [
             'pool'    => [
+                // @phpstan-ignore-next-line
                 'class'        => \Imi\Swoole\Redis\Pool\CoroutineRedisPool::class,
                 'config'       => [
                     'maxResources'    => 10,
@@ -90,18 +95,18 @@ return [
     ] : [],
 
     // 数据库配置
-    'db'    =>    [
+    'db'    => [
         // 数默认连接池名
-        'defaultPool'    =>    'maindb',
+        'defaultPool'    => 'maindb',
         // FPM、Workerman 下用
         'connections'   => [
             'maindb' => [
-                'host' => '127.0.0.1',
+                'host'        => '127.0.0.1',
                 'port'        => 3306,
-                'username' => 'root',
-                'password' => 'root',
-                'database' => 'mysql',
-                'charset'  => 'utf8mb4',
+                'username'    => 'root',
+                'password'    => 'root',
+                'database'    => 'mysql',
+                'charset'     => 'utf8mb4',
                 // 'port'    => '3306',
                 // 'timeout' => '建立连接超时时间',
                 // 'charset' => '',
@@ -121,20 +126,20 @@ return [
     ],
 
     // redis 配置
-    'redis' =>  [
+    'redis' => [
         // 数默认连接池名
-        'defaultPool'   =>  'redis',
+        'defaultPool'   => 'redis',
         // FPM、Workerman 下用
         'connections'   => [
             'redis' => [
-                'host'	=>	'127.0.0.1',
-                'port'	=>	6379,
+                'host'	 => '127.0.0.1',
+                'port'	 => 6379,
                 // 是否自动序列化变量
-                'serialize'	=>	true,
+                'serialize'	 => true,
                 // 密码
-                'password'	=>	null,
+                'password'	 => null,
                 // 第几个库
-                'db'	=>	0,
+                'db'	 => 0,
             ],
         ],
     ],

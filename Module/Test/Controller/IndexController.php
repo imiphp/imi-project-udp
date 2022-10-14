@@ -1,6 +1,8 @@
 <?php
 
-namespace ImiApp\UDPServer\Controller;
+declare(strict_types=1);
+
+namespace ImiApp\Module\Test\Controller;
 
 use Imi\Server\UdpServer\Route\Annotation\UdpAction;
 use Imi\Server\UdpServer\Route\Annotation\UdpController;
@@ -8,6 +10,7 @@ use Imi\Server\UdpServer\Route\Annotation\UdpRoute;
 
 /**
  * 数据收发测试.
+ *
  * @UdpController
  */
 class IndexController extends \Imi\Server\UdpServer\Controller\UdpController
@@ -17,12 +20,11 @@ class IndexController extends \Imi\Server\UdpServer\Controller\UdpController
      *
      * @UdpAction
      * @UdpRoute({"action"="hello"})
-     * @return void
      */
-    public function hello()
+    public function hello(): array
     {
         return [
-            'time'    =>    date($this->data->getFormatData()->format),
+            'time'    => date($this->data->getFormatData()->format),
         ];
     }
 }

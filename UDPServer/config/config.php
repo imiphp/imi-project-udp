@@ -1,16 +1,13 @@
 <?php
 
-use Imi\Log\LogLevel;
+declare(strict_types=1);
+
 return [
-    'configs'    =>    [
+    'configs'    => [
     ],
-    // bean扫描目录
-    'beanScan'    =>    [
-        'ImiApp\UDPServer\Controller',
-    ],
-    'beans'    =>    [
-        'UdpDispatcher'    =>    [
-            'middlewares'    =>    [
+    'beans'    => [
+        'UdpDispatcher'    => [
+            'middlewares'    => [
                 \Imi\Server\UdpServer\Middleware\RouteMiddleware::class,
             ],
         ],
