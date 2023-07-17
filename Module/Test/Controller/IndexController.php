@@ -19,6 +19,7 @@ class IndexController extends \Imi\Server\UdpServer\Controller\UdpController
      * 登录.
      *
      * @UdpAction
+     *
      * @UdpRoute({"action"="hello"})
      */
     public function hello(): array
